@@ -7,13 +7,15 @@ import html2text
 from bs4 import BeautifulSoup, Comment, NavigableString
 
 class Extractor():
-    def __init__(self, url = ""):
+    def __init__(self, url="", html=""):
         self.url       = url
         self.title     = ""
         self.date      = ""
-        self.html      = ""
+        self.html      = html
+        if not self.html:
+            self.html = self.__download()
     
-    def __process_text_ratio(self,soup):
+    def __process_text_ratio(self,soup) -> tuple:
         soup=copy.copy(soup)
         if soup:
             if type(soup) is NavigableString:
@@ -29,7 +31,7 @@ class Extractor():
                 return (total_len-tag_len)/total_len, total_len
         return 0, 0
 
-    def __find_article_html(self,soup):
+    def __find_article_html(self,soup) -> BeautifulSoup:
         tmp_len=0
         tmp_tag=None
         tmp_radio=0.0
@@ -58,7 +60,7 @@ class Extractor():
         else:
             return soup
     
-    def __get_title(self, soup):
+    def __get_title(self, soup) -> str:
         title=''
         if soup:
             for t in soup.find_all_previous(re.compile("^h[1-6]")):
@@ -73,7 +75,7 @@ class Extractor():
         self.title=re.sub(r'<[\s\S]*?>|[\t\r\f\v]|^\s+|\s+$', "", title)
         return self.title
     
-    def download(self):
+    def __download(self) -> str:
         response = requests.get(self.url, timeout=5)
         response.raise_for_status()
         html=''
@@ -87,12 +89,10 @@ class Extractor():
                 if len(encodings) > 0:
                     response.encoding = encodings[0]
                     html=response.text
-        self.html=html
         return html
 
-    def parse(self):
-        html = self.download()
-        soup = BeautifulSoup(html, 'lxml')
+    def parse(self) -> tuple:
+        soup = BeautifulSoup(self.html, 'lxml')
         soup = soup.find('body')
         if soup:
             for tag in soup.find_all(style=re.compile('display:\s?none')):
@@ -103,7 +103,5 @@ class Extractor():
             return self.__get_title(article_html), self.__html_to_md(article_html)
         return '', ''
     
-    def __html_to_md(self, soup):
-        for tag in soup.find_all('figure'):
-            tag.extract()
+    def __html_to_md(self, soup) -> str:
         return html2text.html2text(str(soup), baseurl=self.url)
