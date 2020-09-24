@@ -70,7 +70,7 @@ class Extractor():
             html = BeautifulSoup(self.html, 'lxml')
             title=html.title.text.split('_')[0].split('|')[0]
         
-        self.title=re.sub(r'<[\s\S]*?>|\t\r\f\v|^\s+|\s+$', "", title)
+        self.title=re.sub(r'<[\s\S]*?>|[\t\r\f\v]|^\s+|\s+$', "", title)
         return self.title
     
     def download(self):
