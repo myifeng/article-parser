@@ -1,4 +1,4 @@
-# spider-news
+# article-parser
 
 Extract article or news by url or html, parse the title and content, output in markdown format.
 
