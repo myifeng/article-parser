@@ -59,20 +59,19 @@ class Extractor():
             return soup
     
     def __get_title(self, soup):
-        soup_str=re.sub(r'[\t\r\f\v]', "", str(soup))
         title=''
-        if re.compile(r'<h1.*?>([\s\S]*?)</h1>', re.S).findall(soup_str):
-            title=re.compile(r'<h1.*?>([\s\S]*?)</h1>', re.S).findall(soup_str)[0]
-        elif re.compile(r'<h2.*?>([\s\S]*?)</h2>', re.S).findall(soup_str):
-            title=re.compile(r'<h2.*?>([\s\S]*?)</h2>', re.S).findall(soup_str)[0]
-        elif re.compile(r'<h3.*?>([\s\S]*?)</h3>', re.S).findall(soup_str):
-            title=re.compile(r'<h3.*?>([\s\S]*?)</h3>', re.S).findall(soup_str)[0]
-        elif re.compile(r'<title>([\s\S].*?)</title>', re.S).findall(str(self.html)):
-            tmp=re.compile(r'<title>([\s\S].*?)</title>', re.S).findall(str(self.html))[0]
-            title=tmp.split('_')[0].split('|')[0]
-        title=re.sub(r'<[\s\S]*?>', "", re.sub(r'[\t\r\f\v]', "", title))
-        self.title=title
-        return title
+        if soup:
+            for t in soup.find_all_previous(re.compile("^h[1-6]")):
+                if t.text:
+                    title=t.text
+                    break
+                
+        if not title:
+            html = BeautifulSoup(self.html, 'lxml')
+            title=html.title.text.split('_')[0].split('|')[0]
+        
+        self.title=re.sub(r'<[\s\S]*?>|\t\r\f\v|^\s+|\s+$', "", title)
+        return self.title
     
     def download(self):
         response = requests.get(self.url, timeout=5)
@@ -101,7 +100,7 @@ class Extractor():
             for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
                 comment.extract()
             article_html=self.__find_article_html(soup)
-            return self.__get_title(soup), self.__html_to_md(article_html)
+            return self.__get_title(article_html), self.__html_to_md(article_html)
         return '', ''
     
     def __html_to_md(self, soup):
