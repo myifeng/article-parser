@@ -5,27 +5,34 @@ Extract article or news by url or html, parse the title and content, output in m
 
 ## Basic Usage
 
-[突尼斯成功拦截一非法移民船只 警方共逮捕17人-国际快讯网](http://www.dluohe.cn/post/3909.html)
+[Djokovic wins record 36th Masters title in Rome - Chinadaily.com.cn](http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html)
 
 ```python
-extractor = Extractor(url="http://www.dluohe.cn/post/3909.html")
+extractor = Extractor(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
 title, content=extractor.parse()
 print(title)
-print('---------------')
+print('----------------')
 print(content)
 
-突尼斯成功拦截一非法移民船只 警方共逮捕17人
----------------
-突尼斯媒体当地时间20日报道，突尼斯海岸警卫队在突尼斯南部沙尔巴岛沿岸成【斯诺登再曝新文件】功拦截了一搜非法移民船只，逮捕了船上的17名犯罪嫌疑人。
+Djokovic wins record 36th Masters title in Rome
+----------------
+![](http://img2.chinadaily.com.cn/images/202009/22/5f6962b2a31024adbd959228.jpeg)
+Serbia's Novak Djokovic kisses the trophy after winning the final against
+Argentina's Diego Schwartzman at Italian Open, Foro Italico, Rome, Italy, Sept
+21, 2020. [Photo/Agencies]
 
-![](http://rs1.huanqiucdn.cn/dp/api/images/imageDir/3a437422461f207a431885395083049b.jpg)
+ROME - Novak Djokovic won a record 36th Masters crown as he beat Diego
+Schwartzman in the men's final of the ATP Italian Open on Monday.
 
-突尼斯国防部当天发表声明说，这些非法移民承认他们计划【南航a380航线】从杰尔巴岛偷渡到意大利海岸。当天突尼斯海岸警卫队在事发海域巡逻时，在杰尔巴【特朗普会见安倍】岛以东4英里处发现该可疑船只的非正常活动，并设法将其拦截。声明说，船上的17名嫌疑人均被逮捕，包括16名突尼
-斯人和一名来自厄立特里亚的人，年龄在18岁至30岁之间。
+Djokovic, the world number one and the top seed at the tournament, won 7-5,
+6-3 against Argentine Schwartzman to lift his 36th Masters title, one more
+than Rafael Nadal.
 
-AD_SURVEY_Add_AdPos("7004636");
+The Serb said he did not play his best tennis this time in Rome, but could
+find it when needed.
 
-非法移民船于前一天晚上从杰尔巴海岸出发，企图秘密越过海上边界前往意大利海岸。17名犯罪嫌疑人已被带到扎尔兹斯港口，移交给当地国民警卫队以完成必要的法律程序。（总台记者
-吴爱民）
+Simona Halep, top seed of the women's draw, won her first title in Rome after
+defending champion Karolina Pliskova of the Czech Republic retired while
+trailing 6-0, 2-1 in the final.
 
 ```
