@@ -1,18 +1,34 @@
 # article-parser
 
+[![license](https://img.shields.io/pypi/pyversions/article-parser)](https://pypi.org/project/article-parser/)
+[![license](https://img.shields.io/pypi/v/article-parser)](https://pypi.org/project/article-parser/)
+[![license](https://img.shields.io/pypi/wheel/article-parser)](https://pypi.org/project/article-parser/)
+[![license](https://img.shields.io/github/license/myifeng/article-parser)](https://pypi.org/project/article-parser/)
+
+
 Extract article or news by url or html, parse the title and content, output in markdown format.
 
+
+## How to install
+
+`article-parser` is available on pypi
+https://pypi.org/project/article-parser/
+
+```
+$ pip install article-parser
+```
 
 ## Basic Usage
 
 [Djokovic wins record 36th Masters title in Rome - Chinadaily.com.cn](http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html)
 
 ```python
-extractor = Extractor(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
-title, content=extractor.parse()
-print(title)
-print('----------------')
-print(content)
+>>> import article_parser
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
+>>> print(title)
+>>> print('----------------')
+>>> print(content)
+
 
 Djokovic wins record 36th Masters title in Rome
 ----------------
