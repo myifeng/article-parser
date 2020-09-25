@@ -1,5 +1,5 @@
 from os import path as os_path
-import setuptools
+from setuptools import setup, find_packages
 
 this_directory = os_path.abspath(os_path.dirname(__file__))
 
@@ -8,7 +8,7 @@ def read_file(filename):
         long_description = f.read()
     return long_description
 
-setuptools.setup(
+setup(
     name="article-parser",
     version="0.0.4",
     author="myifeng",
@@ -18,7 +18,7 @@ setuptools.setup(
     long_description=read_file('README.md'),
     long_description_content_type="text/markdown",
     url="https://github.com/myifeng/article-parser",
-    packages=[str('article_parser')],
+    packages=find_packages(exclude=['.github', 'test']),
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",
