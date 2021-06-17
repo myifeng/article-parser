@@ -1,8 +1,9 @@
 # article-parser
 
-[![license](https://img.shields.io/pypi/pyversions/article-parser)](https://pypi.org/project/article-parser/)
-[![license](https://img.shields.io/pypi/v/article-parser)](https://pypi.org/project/article-parser/)
-[![license](https://img.shields.io/pypi/wheel/article-parser)](https://pypi.org/project/article-parser/)
+[![size](https://img.shields.io/github/repo-size/myifeng/article-parser)](https://pypi.org/project/article-parser/)
+[![python](https://img.shields.io/pypi/pyversions/article-parser)](https://pypi.org/project/article-parser/)
+[![pypi](https://img.shields.io/pypi/v/article-parser)](https://pypi.org/project/article-parser/)
+[![wheel](https://img.shields.io/pypi/wheel/article-parser)](https://pypi.org/project/article-parser/)
 [![license](https://img.shields.io/github/license/myifeng/article-parser)](https://pypi.org/project/article-parser/)
 
 
