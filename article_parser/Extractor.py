@@ -7,11 +7,16 @@ import html2text
 from bs4 import BeautifulSoup, Comment, NavigableString
 
 class Extractor():
-    def __init__(self, url="", html=""):
+    def __init__(self, url="", html="", options={}):
+        default_options = {
+            "format": 'md',
+            "threshold": 0.9
+        }
         self.url       = url
         self.title     = ""
         self.date      = ""
         self.html      = html
+        self.options   = default_options.update(options)
         if not self.html:
             self.html = self.__download()
     
@@ -54,7 +59,7 @@ class Extractor():
             return soup
         if tmp_radio >= parent_radio and tmp_tag.name != 'p':
             # article radio
-            if soup.find_all(re.compile("h[1-6]")) or tmp_radio < 0.9:
+            if soup.find_all(re.compile("h[1-6]")) or tmp_radio < self.options['threshold']:
                 return self.__find_article_html(tmp_tag)
             return tmp_tag
         else:
@@ -100,7 +105,10 @@ class Extractor():
             for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
                 comment.extract()
             article_html=self.__find_article_html(soup)
-            return self.__get_title(article_html), self.__html_to_md(article_html)
+            if self.options['format'] == 'md':
+                return self.__get_title(article_html), self.__html_to_md(article_html)
+            else:
+                return self.__get_title(article_html), article_html
         return '', ''
     
     def __html_to_md(self, soup) -> str:
