@@ -108,7 +108,7 @@ class Extractor():
             for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
                 comment.extract()
             article_html = self.__find_article_html(soup)
-            if self.options['format']:
+            if self.options['markdown']:
                 return self.__get_title(article_html), self.__html_to_md(article_html)
             else:
                 return self.__get_title(article_html), article_html
