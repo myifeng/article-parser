@@ -10,7 +10,7 @@ def read_file(filename):
 
 setup(
     name="article-parser",
-    version="0.0.6",
+    version="1.0.0",
     author="myifeng",
     author_email="myifengs@gmail.com",
     maintainer ="myifeng",
