@@ -1,10 +1,10 @@
 import article_parser
 
-title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
-
-assert title == 'Djokovic wins record 36th Masters title in Rome'
-
-assert content == '''![](http://img2.chinadaily.com.cn/images/202009/22/5f6962b2a31024adbd959228.jpeg)
+def test_markdown():
+    title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
+    
+    assert title == 'Djokovic wins record 36th Masters title in Rome'
+    assert content == '''![](http://img2.chinadaily.com.cn/images/202009/22/5f6962b2a31024adbd959228.jpeg)
 Serbia's Novak Djokovic kisses the trophy after winning the final against
 Argentina's Diego Schwartzman at Italian Open, Foro Italico, Rome, Italy, Sept
 21, 2020. [Photo/Agencies]
