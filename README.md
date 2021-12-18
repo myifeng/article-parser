@@ -1,6 +1,7 @@
 # article-parser
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/myifeng/article-parser)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/myifeng/article-parser/Upload%20Python%20Package)
 [![python](https://img.shields.io/pypi/pyversions/article-parser)](https://pypi.org/project/article-parser/)
 [![pypi](https://img.shields.io/pypi/v/article-parser)](https://pypi.org/project/article-parser/)
 [![wheel](https://img.shields.io/pypi/wheel/article-parser)](https://pypi.org/project/article-parser/)
