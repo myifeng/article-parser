@@ -31,8 +31,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build and test
         run: |
-          pytest --disable-warnings
           python -m build
+          pytest --disable-warnings
       - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
         if: github.event_name == 'release' && github.event.action == 'created'
