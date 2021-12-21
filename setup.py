@@ -10,7 +10,6 @@ def read_file(filename):
 
 setup(
     name="article-parser",
-    version="1.0.0",
     author="myifeng",
     author_email="myifengs@gmail.com",
     maintainer ="myifeng",
@@ -36,4 +35,6 @@ setup(
         "Programming Language :: Python :: Implementation",
     ],
     python_requires='>=3.6',
+    version_config=True,
+    setup_requires=["setuptools-git-versioning"]
 )
