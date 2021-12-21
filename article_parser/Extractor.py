@@ -11,7 +11,8 @@ class Extractor():
     def __init__(self, url='', html='', options={}):
         default_options = {
             'markdown': True,
-            'threshold': 0.9
+            'threshold': 0.9,
+            'timeout': 5
         }
         self.url = url
         self.title = ''
@@ -85,7 +86,7 @@ class Extractor():
         return self.title
 
     def __download(self) -> str:
-        response = requests.get(self.url, timeout=5, headers={'User-Agent': UserAgent().random})
+        response = requests.get(self.url, timeout=self.options['timeout'], headers={'User-Agent': UserAgent().random})
         response.raise_for_status()
         html = ''
         if response.encoding != 'ISO-8859-1':
