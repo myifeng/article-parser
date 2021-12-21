@@ -5,12 +5,14 @@ import copy
 import requests
 import html2text
 from bs4 import BeautifulSoup, Comment, NavigableString
+from fake_useragent import UserAgent
 
 class Extractor():
     def __init__(self, url='', html='', options={}):
         default_options = {
             'markdown': True,
-            'threshold': 0.9
+            'threshold': 0.9,
+            'timeout': 5
         }
         self.url = url
         self.title = ''
@@ -77,13 +79,14 @@ class Extractor():
 
         if not title:
             html = BeautifulSoup(self.html, 'lxml')
-            title = html.title.text.split('_')[0].split('|')[0]
+            if html.title:
+              title = html.title.text.split('_')[0].split('|')[0]
 
         self.title = re.sub(r'<[\s\S]*?>|[\t\r\f\v]|^\s+|\s+$', "", title)
         return self.title
 
     def __download(self) -> str:
-        response = requests.get(self.url, timeout=5)
+        response = requests.get(self.url, timeout=self.options['timeout'], headers={'User-Agent': UserAgent().random})
         response.raise_for_status()
         html = ''
         if response.encoding != 'ISO-8859-1':

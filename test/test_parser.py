@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+
 import article_parser
 
 def test_markdown():
