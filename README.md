@@ -27,11 +27,12 @@ $ pip install article-parser
 >>> import article_parser
 
 article_parser.parse(
-  url='',              ## The URL of the article. optional
-  html='',             ## The HTML of the article. optional
+  url='',               # The URL of the article. optional
+  html='',              # The HTML of the article. optional
   options={
-    'markdown': True,  ## Output in markdown format. defult True. optional
-    'threshold': 0.9   ## Content ratio threshold. defult 0.9. optional
+    'markdown': True,   # Output in markdown format. defult True. optional
+    'threshold': 0.9,   # Content ratio threshold. defult 0.9. optional
+    'timeout': 5        # Request webpage timeout time, in seconds, default 5. optional
   })
 
 ## ouput html
