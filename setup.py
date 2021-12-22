@@ -35,6 +35,10 @@ setup(
         "Programming Language :: Python :: Implementation",
     ],
     python_requires='>=3.6',
-    version_config=True,
+    version_config={
+        "template": "{tag}",
+        "dirty_template": "{tag}",
+        "dev_template": "{tag}"
+    },
     setup_requires=["setuptools-git-versioning"]
 )
