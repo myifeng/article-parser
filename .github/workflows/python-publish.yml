@@ -23,11 +23,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest setuptools
+          pip install pytest setuptools wheel twine
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build and test
         run: |
-          python -m build
+          python setup.py install sdist bdist_wheel
           pytest --disable-warnings
       - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
