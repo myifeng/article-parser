@@ -1,15 +1,11 @@
-# This workflows will upload a Python Package using Twine when a release is created
-# For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
-
-name: Upload Python Package
+name: CI
 
 on:
   push:
-    branches: [ dev ]
+    branches: [dev]
   pull_request:
-    branches: [ master ]
-  release:
-    types: [created]
+    branches: [master]
+  create: 
 
 jobs:
   build:
@@ -35,7 +31,7 @@ jobs:
           pytest --disable-warnings
       - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
-        if: github.event_name == 'release' && github.event.action == 'created'
+        if: github.event_name == 'create' && github.event.ref_type == 'tag'
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
