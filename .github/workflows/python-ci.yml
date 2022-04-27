@@ -1,19 +1,21 @@
 # This workflows will upload a Python Package using Twine when a release is created
 # For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
 
-name: Upload Python Package
+name: CI
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.6"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -29,13 +31,6 @@ jobs:
         run: |
           python setup.py install sdist bdist_wheel
           pytest --disable-warnings
-      - name: Test Publish
-        uses: pypa/gh-action-pypi-publish@release/v1
-        if: github.event_name == 'release' && github.event.action == 'created'
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
       - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
         if: github.event_name == 'release' && github.event.action == 'created'
