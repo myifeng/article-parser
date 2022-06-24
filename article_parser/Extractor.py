@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup, Comment, NavigableString
 from fake_useragent import UserAgent
 
 class Extractor():
-    def __init__(self, url='', html='', options={}):
+    def __init__(self, url='', html='', proxies={}, options={}):
         default_options = {
             'markdown': True,
             'threshold': 0.9,
@@ -18,6 +18,7 @@ class Extractor():
         self.title = ''
         self.date = ''
         self.html = html
+        self.proxies = proxies
         default_options.update(options)
         self.options = default_options.copy()
         if not self.html:
@@ -86,7 +87,7 @@ class Extractor():
         return self.title
 
     def __download(self) -> str:
-        response = requests.get(self.url, timeout=self.options['timeout'], headers={'User-Agent': UserAgent().random})
+        response = requests.get(self.url, timeout=self.options['timeout'], headers={'User-Agent': UserAgent().random}, proxies=self.proxies)
         response.raise_for_status()
         html = ''
         if response.encoding != 'ISO-8859-1':

@@ -29,6 +29,7 @@ $ pip install article-parser
 article_parser.parse(
   url='',               # The URL of the article. optional
   html='',              # The HTML of the article. optional
+  proxies={},           # The Proxies to bypass anonymity, security and prevent IP blocking.
   options={
     'markdown': True,   # Output in markdown format. defult True. optional
     'threshold': 0.9,   # Content ratio threshold. defult 0.9. optional
