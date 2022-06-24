@@ -35,10 +35,10 @@ article_parser.parse(
     'timeout': 5        # Request webpage timeout time, in seconds, default 5. optional
   })
 
-## ouput html
+## ouput markdown
 >>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
 
-## output markdown
+## output html
 >>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", options={'markdown': False})
 ```
 
