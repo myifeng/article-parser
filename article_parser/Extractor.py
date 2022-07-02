@@ -5,22 +5,21 @@ import copy
 import requests
 import html2text
 from bs4 import BeautifulSoup, Comment, NavigableString
-from fake_useragent import UserAgent
+
 
 class Extractor():
-    def __init__(self, url='', html='', proxies={}, options={}):
+    def __init__(self, url='', html='', options={}, **request_kwargs):
         default_options = {
             'markdown': True,
-            'threshold': 0.9,
-            'timeout': 5
+            'threshold': 0.9
         }
         self.url = url
         self.title = ''
         self.date = ''
         self.html = html
-        self.proxies = proxies
         default_options.update(options)
         self.options = default_options.copy()
+        self.request_kwargs = request_kwargs.copy()
         if not self.html:
             self.html = self.__download()
 
@@ -81,13 +80,13 @@ class Extractor():
         if not title:
             html = BeautifulSoup(self.html, 'lxml')
             if html.title:
-              title = html.title.text.split('_')[0].split('|')[0]
+                title = html.title.text.split('_')[0].split('|')[0]
 
         self.title = re.sub(r'<[\s\S]*?>|[\t\r\f\v]|^\s+|\s+$', "", title)
         return self.title
 
     def __download(self) -> str:
-        response = requests.get(self.url, timeout=self.options['timeout'], headers={'User-Agent': UserAgent().random}, proxies=self.proxies)
+        response = requests.get(self.url, **self.request_kwargs)
         response.raise_for_status()
         html = ''
         if response.encoding != 'ISO-8859-1':

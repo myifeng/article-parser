@@ -29,18 +29,19 @@ $ pip install article-parser
 article_parser.parse(
   url='',               # The URL of the article. optional
   html='',              # The HTML of the article. optional
-  proxies={},           # The Proxies to bypass anonymity, security and prevent IP blocking.
   options={
     'markdown': True,   # Output in markdown format. defult True. optional
-    'threshold': 0.9,   # Content ratio threshold. defult 0.9. optional
-    'timeout': 5        # Request webpage timeout time, in seconds, default 5. optional
-  })
+    'threshold': 0.9    # Content ratio threshold. defult 0.9. optional
+  },
+  request_kwargs        # Optional arguments that `request` takes. optional
+  ),
+  
 
 ## ouput markdown
->>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", timeout=5)
 
 ## output html
->>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", options={'markdown': False})
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", options={'markdown': False}, timeout=5)
 ```
 
 ## Example
