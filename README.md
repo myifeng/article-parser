@@ -27,20 +27,20 @@ $ pip install article-parser
 >>> import article_parser
 
 article_parser.parse(
-  url='',               # The URL of the article. optional
-  html='',              # The HTML of the article. optional
-  proxies={},           # The Proxies to bypass anonymity, security and prevent IP blocking.
-  options={
-    'markdown': True,   # Output in markdown format. defult True. optional
-    'threshold': 0.9,   # Content ratio threshold. defult 0.9. optional
-    'timeout': 5        # Request webpage timeout time, in seconds, default 5. optional
-  })
+  url='',               # The URL of the article.
+  html='',              # The HTML of the article.
+  threshold=0.9,        # The ratio of text to the entire document, default 0.9.
+  output='html',        # Result output format, support ``markdown`` and ``html``, default ``html``.
+  **kwargs              # Optional arguments that `request` takes. optional
+  ),
+  
 
 ## ouput markdown
->>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", output='markdown', timeout=5)
 
 ## output html
->>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", options={'markdown': False})
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", timeout=5)
+
 ```
 
 ## Example
@@ -51,7 +51,7 @@ article_parser.parse(
 
 ```python
 >>> import article_parser
->>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html")
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", output='markdown', timeout=5)
 >>> print(title)
 >>> print('----------------')
 >>> print(content)
@@ -82,7 +82,7 @@ trailing 6-0, 2-1 in the final.
 * HTML
 ```python
 >>> import article_parser
->>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", options={'markdown': False})
+>>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", timeout=5)
 >>> print(title)
 >>> print('----------------')
 >>> print(content)

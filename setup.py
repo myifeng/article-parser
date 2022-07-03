@@ -3,18 +3,20 @@ from setuptools import setup, find_packages
 
 this_directory = os_path.abspath(os_path.dirname(__file__))
 
+
 def read_file(filename):
     with open(os_path.join(this_directory, filename), encoding='utf-8') as f:
         long_description = f.read()
     return long_description
 
+
 setup(
     name="article-parser",
     author="myifeng",
     author_email="myifengs@gmail.com",
-    maintainer ="myifeng",
-    maintainer_email ="myifengs@gmail.com",
-    keywords ="article news html parser extractor", 
+    maintainer="myifeng",
+    maintainer_email="myifengs@gmail.com",
+    keywords="article news html parser extractor",
     description="A parser to parse article from url or html",
     long_description=read_file('README.md'),
     long_description_content_type="text/markdown",
