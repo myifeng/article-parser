@@ -8,18 +8,13 @@ from bs4 import BeautifulSoup, Comment, NavigableString
 
 
 class Extractor():
-    def __init__(self, url='', html='', options={}, **request_kwargs):
-        default_options = {
-            'markdown': True,
-            'threshold': 0.9
-        }
+    def __init__(self, url, html, threshold, output, **kwargs):
         self.url = url
         self.title = ''
-        self.date = ''
         self.html = html
-        default_options.update(options)
-        self.options = default_options.copy()
-        self.request_kwargs = request_kwargs.copy()
+        self.output = output
+        self.threshold = threshold
+        self.kwargs = kwargs
         if not self.html:
             self.html = self.__download()
 
@@ -63,7 +58,7 @@ class Extractor():
             return soup
         if tmp_radio >= parent_radio and tmp_tag.name != 'p':
             # article radio
-            if soup.find_all(re.compile("h[1-6]")) or tmp_radio < self.options['threshold']:
+            if soup.find_all(re.compile("h[1-6]")) or tmp_radio < self.threshold:
                 return self.__find_article_html(tmp_tag)
             return tmp_tag
         else:
@@ -86,7 +81,7 @@ class Extractor():
         return self.title
 
     def __download(self) -> str:
-        response = requests.get(self.url, **self.request_kwargs)
+        response = requests.get(self.url, **self.kwargs)
         response.raise_for_status()
         html = ''
         if response.encoding != 'ISO-8859-1':
@@ -111,7 +106,7 @@ class Extractor():
             for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
                 comment.extract()
             article_html = self.__find_article_html(soup)
-            if self.options['markdown']:
+            if self.output == 'markdown':
                 return self.__get_title(article_html), self.__html_to_md(article_html)
             else:
                 return self.__get_title(article_html), article_html
