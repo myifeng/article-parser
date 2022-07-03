@@ -40,6 +40,7 @@ article_parser.parse(
 
 ## output html
 >>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", timeout=5)
+
 ```
 
 ## Example
