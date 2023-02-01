@@ -1,4 +1,4 @@
-beautifulsoup4==4.11.1
+beautifulsoup4==4.11.2
 html2text==2020.1.16
 requests==2.27.1
 setuptools==49.2.1
