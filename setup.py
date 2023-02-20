@@ -35,7 +35,7 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: Implementation",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     version_config={
         "template": "{tag}",
         "dirty_template": "{tag}",
