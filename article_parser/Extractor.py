@@ -18,12 +18,22 @@ class Extractor():
         if not self.html:
             self.html = self.__download()
 
-    def __process_text_ratio(self, tag) -> tuple:
-        text_len = len(tag.text.strip())
-        tag_len = len(str(tag))
-        if tag_len == 0:
-            return 0, 0
-        return text_len / tag_len, tag_len
+    def __process_text_ratio(self, soup) -> tuple:
+        soup = copy.copy(soup)
+        if soup:
+            if type(soup) is NavigableString:
+                return 1
+            for t in soup.find_all(['script', 'style', 'noscript', 'a', 'img']):
+                t.extract()
+            soup_str = re.sub(
+                r'\s*[^=\s+]+\s*=\s*([^=>]+)?(?=(\s+|>))', "", str(soup))
+            total_len = len(soup_str)
+            if total_len:
+                tag_len = 0.0
+                for tag in re.compile(r'</?\w+[^>]*>|[\s]', re.S).findall(soup_str):
+                    tag_len += len(tag)
+                return (total_len-tag_len)/total_len, total_len
+        return 0, 0
 
     def __find_article_html(self, soup) -> BeautifulSoup:
         tmp_len = 0
@@ -62,7 +72,7 @@ class Extractor():
                     title = t.text
                     break
 
-        if not title and self.html:
+        if not title:
             html = BeautifulSoup(self.html, 'lxml')
             if html.title:
                 title = html.title.text.split('_')[0].split('|')[0]
