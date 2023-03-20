@@ -73,7 +73,18 @@ class Extractor():
     def __download(self) -> str:
         response = requests.get(self.url, **self.kwargs)
         response.raise_for_status()
-        html = response.content.decode(response.encoding)
+        html = ''
+        if response.encoding != 'ISO-8859-1':
+            # return response as a unicode string
+            html = response.text
+        else:
+            html = response.content
+            if 'charset' not in response.headers.get('content-type'):
+                encodings = requests.utils.get_encodings_from_content(
+                    response.text)
+                if len(encodings) > 0:
+                    response.encoding = encodings[0]
+                    html = response.text
         return html
 
 
