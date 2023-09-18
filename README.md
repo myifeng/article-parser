@@ -8,7 +8,7 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/article-parser)
 
 
-**Extract article or news by url or html, parse the title and content, output in markdown format.**
+**Extract article or news by url or html, parse the title and content.**
 
 *[English](README.md)  ∙ [简体中文](README.zh-CN.md)*
 

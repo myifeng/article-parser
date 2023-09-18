@@ -8,7 +8,7 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/article-parser)
 
 
-**一种通过任意URL或者html文件解析网页的标题和正文,可以输出为markdown格式的通用库**
+**一种通过任意URL或者html文件解析网页的标题和正文的通用库**
 
 *[English](README.md)  ∙ [简体中文](README.zh-CN.md)*
 
