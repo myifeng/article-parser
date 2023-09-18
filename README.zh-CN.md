@@ -10,7 +10,7 @@
 
 **一种通过任意URL或者html文件解析网页的标题和正文的通用库**
 
-*[English](README.md)  ∙ [简体中文](README.zh-CN.md)*
+*[English]([README.md](https://github.com/myifeng/article-parser/blob/master/README.md))  ∙ [简体中文]([README.zh-CN.md](https://github.com/myifeng/article-parser/blob/master/README.zh-CN.md))*
 
 ## 安装
 
