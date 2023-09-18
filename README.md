@@ -10,7 +10,7 @@
 
 **Extract article or news by url or html, parse the title and content.**
 
-*[English]([README.md](https://github.com/myifeng/article-parser/blob/master/README.md))  ∙ [简体中文]([README.zh-CN.md](https://github.com/myifeng/article-parser/blob/master/README.zh-CN.md))*
+*[English](https://github.com/myifeng/article-parser/blob/master/README.md)  ∙ [简体中文](https://github.com/myifeng/article-parser/blob/master/README.zh-CN.md)*
 
 ## How to install
 
