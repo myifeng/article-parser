@@ -31,9 +31,3 @@ jobs:
         run: |
           python setup.py install sdist bdist_wheel
           pytest --disable-warnings
-      - name: Publish
-        uses: pypa/gh-action-pypi-publish@release/v1
-        if: github.event_name == 'release' && github.event.action == 'created'
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
