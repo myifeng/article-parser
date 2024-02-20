@@ -13,3 +13,4 @@ env/
 htmlcov/
 .mypy_cache/
 *.pypirc
+.eggs/

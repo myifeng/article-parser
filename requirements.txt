@@ -2,4 +2,4 @@ beautifulsoup4==4.12.2
 html2text==2020.1.16
 requests==2.31.0
 setuptools==49.2.1
-lxml==4.9.3
+lxml==4.9.0
