@@ -41,5 +41,6 @@ setup(
         "dirty_template": "{tag}",
         "dev_template": "{tag}"
     },
-    setup_requires=["setuptools-git-versioning"]
+    setup_requires=["setuptools-git-versioning"],
+    install_requires = ['beautifulsoup4==4.12.2', 'html2text==2020.1.16', 'requests==2.31.0', 'lxml==4.9.0']
 )
