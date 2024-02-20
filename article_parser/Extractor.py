@@ -97,9 +97,9 @@ class Extractor():
                     html = response.text
         return html
 
+
     def parse(self) -> tuple:
-        soup = BeautifulSoup(self.html, 'lxml')
-        soup = soup.find('body')
+        soup = BeautifulSoup(self.html, 'lxml').find('body')
         if soup:
             for tag in soup.find_all(style=re.compile('display:\s?none')):
                 tag.extract()

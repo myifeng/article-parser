@@ -1,4 +1,4 @@
-name: CI
+name: Publish
 
 on:
   release:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: ["3.6"]
+        python-version: ["3.7"]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -37,10 +37,12 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
+          repository-url: https://test.pypi.org/legacy/
+          skip-existing: true
       - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
         if: github.event_name == 'create' && github.event.ref_type == 'tag'
         with:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
+          skip-existing: true

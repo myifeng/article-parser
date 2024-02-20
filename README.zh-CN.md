@@ -8,42 +8,41 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/article-parser)
 
 
-**Extract article or news by url or html, parse the title and content.**
+**一种通过任意URL或者html文件解析网页的标题和正文的通用库**
 
 *[English](https://github.com/myifeng/article-parser/blob/master/README.md)  ∙ [简体中文](https://github.com/myifeng/article-parser/blob/master/README.zh-CN.md)*
 
-## How to install
+## 安装
 
-[`article-parser`](https://pypi.org/project/article-parser/) is available on pypi
-https://pypi.org/project/article-parser/
+[`article-parser`](https://pypi.org/project/article-parser/) 可以在[`Pipy`](https://pypi.org/project/article-parser/)中下载使用
 
 ```
 $ pip install article-parser
 ```
 
-## Basic Usage
+## 使用
 
 ```python
 >>> import article_parser
 
 article_parser.parse(
-  url='',               # The URL of the article.
-  html='',              # The HTML of the article.
-  threshold=0.9,        # The ratio of text to the entire document, default 0.9.
-  output='html',        # Result output format, support ``markdown`` and ``html``, default ``html``.
-  **kwargs              # Optional arguments that `request` takes. optional
+  url='',               # 网页的地址.
+  html='',              # Html文件内容
+  threshold=0.9,        # 阈值，默认0.9
+  output='html',        # 输出格式，支持 markdown 和 html, 默认html
+  **kwargs              # 可选参数
   ),
   
 
-## ouput markdown
+## 输出markdown格式
 >>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", output='markdown', timeout=5)
 
-## output html
+## 输出html格式
 >>> title, content = article_parser.parse(url="http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html", timeout=5)
 
 ```
 
-## Example
+## 示例
 [Djokovic wins record 36th Masters title in Rome - Chinadaily.com.cn](http://www.chinadaily.com.cn/a/202009/22/WS5f6962b2a31024ad0ba7afcb.html)
 
 
