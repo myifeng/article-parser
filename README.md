@@ -5,7 +5,7 @@
 [![pypi](https://img.shields.io/pypi/v/article-parser)](https://pypi.org/project/article-parser/)
 [![wheel](https://img.shields.io/pypi/wheel/article-parser)](https://pypi.org/project/article-parser/)
 [![license](https://img.shields.io/github/license/myifeng/article-parser)](https://pypi.org/project/article-parser/)
-![PyPI - Downloads](https://img.shields.io/pypi/dd/article-parser)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/article-parser)
 
 
 **Extract article or news by url or html, parse the title and content.**
