@@ -106,3 +106,7 @@ Djokovic wins record 36th Masters title in Rome
 ## Contributors
 
 [![All contributions](https://contrib.rocks/image?repo=myifeng/article-parser)](https://github.com/myifeng/article-parser/graphs/contributors)
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/myifeng/article-parser.svg?variant=adaptive)](https://github.com/myifeng/article-parser)
+
