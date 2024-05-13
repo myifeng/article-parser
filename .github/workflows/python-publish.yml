@@ -36,7 +36,7 @@ jobs:
         if: github.event_name == 'release' && github.event.action == 'created'
         with:
           user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository-url: https://test.pypi.org/legacy/
           skip-existing: true
           verbose: true
