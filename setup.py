@@ -42,5 +42,5 @@ setup(
         "dev_template": "{tag}"
     },
     setup_requires=["setuptools-git-versioning"],
-    install_requires = ['beautifulsoup4==4.12.3', 'html2text==2020.1.16', 'requests==2.31.0', 'lxml==5.2.2']
+    install_requires = ['beautifulsoup4==4.12.3', 'html2text==2020.1.16', 'requests==2.32.1', 'lxml==5.2.2']
 )
