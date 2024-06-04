@@ -32,14 +32,15 @@ jobs:
           python -m build
           pip install dist/article_parser-*.whl
           pytest --disable-warnings
-      - name: Test Publish
-        uses: pypa/gh-action-pypi-publish@release/v1
-        if: github.event_name == 'release' && github.event.action == 'created'
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
-          repository-url: https://test.pypi.org/legacy/
-          skip-existing: true
+      # - name: Test Publish
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   if: github.event_name == 'release' && github.event.action == 'created'
+      #   with:
+      #     user: __token__
+      #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      #     repository-url: https://test.pypi.org/legacy/
+      #     skip-existing: true
+      #     verbose: true
       - name: Publish
         uses: pypa/gh-action-pypi-publish@release/v1
         if: github.event_name == 'create' && github.event.ref_type == 'tag'
@@ -47,3 +48,4 @@ jobs:
           user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
           skip-existing: true
+          verbose: true

@@ -16,8 +16,8 @@ setup(
     author_email="myifengs@gmail.com",
     maintainer="myifeng",
     maintainer_email="myifengs@gmail.com",
-    keywords="article news html parser extractor",
-    description="A parser to parse article from url or html",
+    keywords="article news html parser Extract extractor body",
+    description="A parser that parses articles from any url or html",
     long_description=read_file('README.md'),
     long_description_content_type="text/markdown",
     url="https://github.com/myifeng/article-parser",
@@ -43,5 +43,5 @@ setup(
         "dev_template": "{tag}"
     },
     setup_requires=["setuptools-git-versioning"],
-    install_requires = ['beautifulsoup4==4.12.3', 'html2text==2020.1.16', 'requests==2.31.0', 'lxml==5.1.0']
+    install_requires = ['beautifulsoup4==4.12.3', 'html2text==2020.1.16', 'requests==2.31.0', 'lxml==5.2.2']
 )

@@ -5,7 +5,7 @@
 [![pypi](https://img.shields.io/pypi/v/article-parser)](https://pypi.org/project/article-parser/)
 [![wheel](https://img.shields.io/pypi/wheel/article-parser)](https://pypi.org/project/article-parser/)
 [![license](https://img.shields.io/github/license/myifeng/article-parser)](https://pypi.org/project/article-parser/)
-![PyPI - Downloads](https://img.shields.io/pypi/dd/article-parser)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/article-parser)
 
 
 **一种通过任意URL或者html文件解析网页的标题和正文的通用库**
@@ -105,3 +105,6 @@ Djokovic wins record 36th Masters title in Rome
 ## Contributors
 
 [![All contributions](https://contrib.rocks/image?repo=myifeng/article-parser)](https://github.com/myifeng/article-parser/graphs/contributors)
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/myifeng/article-parser.svg?variant=adaptive)](https://github.com/myifeng/article-parser)
