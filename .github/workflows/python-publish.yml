@@ -29,11 +29,21 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Get release version
         id: get_version
-        run: echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/}"
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "Release version: $VERSION"
+            echo ::set-output name=VERSION::$VERSION
+          else
+            echo "Not a release tag. Exiting."
+            exit 1
+          fi
+      - name: Update setup.py version
+        run: |
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          sed -i "s/version='0.0.0'/version='$VERSION'/" setup.py
       - name: Build and test
         run: |
-          echo "Building package with version ${{ steps.get_version.outputs.VERSION }}"
-          sed -i "s/version='0.0.0'/version='${{ steps.get_version.outputs.VERSION }}'/" setup.py
           python -m build
           pip install dist/article_parser-*.whl
           pytest --disable-warnings
