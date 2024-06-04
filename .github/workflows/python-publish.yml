@@ -27,8 +27,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest setuptools wheel twine build
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Get release version
+        id: get_version
+        run: echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/}"
       - name: Build and test
         run: |
+          echo "Building package with version ${{ steps.get_version.outputs.VERSION }}"
+          sed -i "s/version='0.0.0'/version='${{ steps.get_version.outputs.VERSION }}'/" setup.py
           python -m build
           pip install dist/article_parser-*.whl
           pytest --disable-warnings
